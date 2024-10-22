@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center mb-4 text-primary">Welcome to Prime Robotics</h1>
+
+    <!-- Search Bar -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <input type="text" id="courseSearch" class="form-control" placeholder="Search for a course..." onkeyup="filterCourses()">
+        </div>
+    </div>
+
+    <!-- Course Cards -->
+    <div class="row" id="coursesList">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4 course-item">
+            <div class="card card-custom position-relative">
+                <div class="card-bg" style="background-image: url('{{ url_for('static', filename='images/' ~ course.image) }}');"></div>
+                <div class="card-img-overlay d-flex flex-column justify-content-end bg-dark-transparent">
+                    <h5 class="card-title text-light">{{ course.name }}</h5>
+                    <p class="card-text text-light">{{ course.description }}</p>
+                    <a href="{{ url_for('course_details', course_id=course.id) }}" class="btn btn-info mt-2">Course Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <style>
+        /* Styling for Search Bar */
+        #courseSearch {
+            border: 2px solid #007bff;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Styling for Course Cards */
+        .card-custom {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-bg {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.75);
+        }
+
+        .card-img-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.3s ease;
+        }
+
+        .card-custom:hover .card-img-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+{% endblock %}

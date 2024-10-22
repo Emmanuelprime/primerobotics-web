@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Prime Robotics</title>
+    <!-- External CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+    <style>
+        /* Hero section styling */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Background video styling */
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5); /* Dims the video for text visibility */
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero .btn {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #0062cc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Cards */
+        .card-custom {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card-custom:hover {
+            transform: scale(1.05);
+        }
+
+        .icon-social {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .icon-social:hover {
+            color: #0062cc;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-dark text-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold" href="{{ url_for('home') }}" style="font-size: 1.8rem;">Prime Robotics</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('courses_list') }}">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin_login') }}">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='videos/robotics.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div>
+            <h1>Welcome to Prime Robotics</h1>
+            <p class="lead">Innovating the Future with AI and Robotics</p>
+            <a href="#services" class="btn btn-primary btn-lg">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Content Section: Services -->
+    <div class="container mt-5" id="services">
+        <h2 class="text-center mb-4">Our Services</h2>
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="card card-custom">
+                    <div class="card-body text-center">
+                        <i class="fas fa-robot fa-3x mb-3"></i>
+                        <h5 class="card-title">Robotics Development</h5>
+                        <p class="card-text">Building intelligent systems for automation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card card-custom">
+                    <div class="card-body text-center">
+                        <i class="fas fa-brain fa-3x mb-3"></i>
+                        <h5 class="card-title">Artificial Intelligence</h5>
+                        <p class="card-text">Harnessing AI to solve complex problems.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card card-custom">
+                    <div class="card-body text-center">
+                        <i class="fas fa-code fa-3x mb-3"></i>
+                        <h5 class="card-title">Software Development</h5>
+                        <p class="card-text">Creating software solutions for various industries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-3 bg-dark text-center text-light">
+        <div class="container">
+            <p>&copy; 2024 Prime Robotics | All rights reserved</p>
+            <div>
+                <a href="#" class="icon-social"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="#" class="icon-social"><i class="fab fa-twitter fa-lg ml-3"></i></a>
+                <a href="#" class="icon-social"><i class="fab fa-linkedin-in fa-lg ml-3"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

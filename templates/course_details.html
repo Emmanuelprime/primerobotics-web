@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ course.name }}</h2>
+    <p>{{ course.description }}</p>
+    <ul>
+        <li><strong>Duration:</strong> {{ course.duration }}</li>
+        <li><strong>Cost:</strong> {{ course.cost }}</li>
+    </ul>
+    <h3>Course Requirements for {{course.name}}</h3>
+    {% for i in course.requirements%}
+    <li>{{ i }}</li>
+    {% endfor %}
+    <br>
+    <a href="{{ url_for('register', course_id=course.id) }}" class="btn btn-primary">Register for this Course</a>
+
+    
+{% endblock %}
